@@ -21,10 +21,10 @@ def combine_trading_strategies(momentum_signals, mean_reversion_signals, macro_s
         decision[combined_score > 0.5] = "BUY"
         decision[combined_score < -0.5] = "SELL"
         
-        logging.info("✅ Hybridstrategi genererad baserat på kombinerade signaler.")
+        logging.info("Hybridstrategi genererad baserat på kombinerade signaler.")
         return decision
     except Exception as e:
-        logging.error(f"❌ Fel vid generering av hybridstrategi: {str(e)}")
+        logging.error(f"Fel vid generering av hybridstrategi: {str(e)}")
         return None
 
 # Exempelanrop
@@ -44,5 +44,5 @@ if __name__ == "__main__":
     sentiment_score = pd.Series([0.1, -0.2, 0.05, 0.1, -0.1], index=momentum_signals.index)
     
     hybrid_decision = combine_trading_strategies(momentum_signals, mean_reversion_signals, macro_score, sentiment_score)
-    print(f"📢 Hybridstrategi-baserade beslut:")
+    print(f"Hybridstrategi-baserade beslut:")
     print(hybrid_decision)
