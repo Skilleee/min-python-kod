@@ -8,6 +8,8 @@ jobs:
     steps:
       - name: Check out repository
         uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.GH_PAT }}  # Använder din nya token för att få skrivåtkomst
 
       - name: Set up Python
         uses: actions/setup-python@v4
@@ -26,3 +28,9 @@ jobs:
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
           commit_message: "Auto-fix: formatted code using Black & Flake8"
+          repository: .
+          commit_user_name: github-actions[bot]
+          commit_user_email: 41898282+github-actions[bot]@users.noreply.github.com
+          commit_author: Skilleee <Skilleee@users.noreply.github.com>
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_PAT }}  # Använd token här också för push-rättigheter
