@@ -60,13 +60,13 @@ if __name__ == "__main__":
     simulated_prices = pd.Series(np.cumsum(np.random.randn(100)) + 100)
     
     momentum = calculate_momentum(simulated_prices)
-    print(f"📊 Momentum:
+    print(f"Momentum:
 {momentum.tail()}")
     
     rsi = relative_strength_index(simulated_prices)
-    print(f"📈 RSI:
+    print(f"RSI:
 {rsi.tail()}")
     
     signals = momentum_strategy(simulated_prices)
-    print(f"📢 Handelsignaler:
+    print(f"Handelsignaler:
 {signals.tail()}")
