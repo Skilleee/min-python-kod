@@ -13,10 +13,10 @@ def analyze_sector_performance(market_data):
         sector_performance = market_data.groupby("sector")["return"].mean().sort_values(ascending=False)
         top_sectors = sector_performance.head(3).index.tolist()
         bottom_sectors = sector_performance.tail(3).index.tolist()
-        logging.info(f"Bästa sektorer: {top_sectors}, Sämsta sektorer: {bottom_sectors}")
+        logging.info(f"✅ Bästa sektorer: {top_sectors}, Sämsta sektorer: {bottom_sectors}")
         return top_sectors, bottom_sectors
     except Exception as e:
-        logging.error(f"Fel vid sektoranalys: {str(e)}")
+        logging.error(f"❌ Fel vid sektoranalys: {str(e)}")
         return None, None
 
 def adjust_sector_exposure(portfolio, top_sectors, bottom_sectors):
@@ -27,10 +27,10 @@ def adjust_sector_exposure(portfolio, top_sectors, bottom_sectors):
         portfolio["adjustment"] = portfolio["sector"].apply(lambda x: 0.05 if x in top_sectors else (-0.05 if x in bottom_sectors else 0))
         portfolio["new_allocation"] = portfolio["allocation"] + portfolio["adjustment"]
         portfolio["new_allocation"] = np.clip(portfolio["new_allocation"], 0, 1)  # Säkerställer att allokeringen ligger mellan 0-100%
-        logging.info("Sektorexponering justerad i portföljen.")
+        logging.info("✅ Sektorexponering justerad i portföljen.")
         return portfolio
     except Exception as e:
-        logging.error(f"Fel vid justering av sektorexponering: {str(e)}")
+        logging.error(f"❌ Fel vid justering av sektorexponering: {str(e)}")
         return portfolio
 
 # Exempelanrop
