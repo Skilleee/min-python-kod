@@ -11,10 +11,10 @@ def analyze_sentiment(sentiment_data):
     """
     try:
         sentiment_score = sentiment_data["sentiment_score"].mean()
-        logging.info(f"✅ Genomsnittlig sentimentpoäng beräknad: {sentiment_score:.4f}")
+        logging.info(f"Genomsnittlig sentimentpoäng beräknad: {sentiment_score:.4f}")
         return sentiment_score
     except Exception as e:
-        logging.error(f"❌ Fel vid analys av sentiment: {str(e)}")
+        logging.error(f"Fel vid analys av sentiment: {str(e)}")
         return None
 
 def adjust_decision_based_on_sentiment(sentiment_data, trade_log, sentiment_threshold=0.1):
@@ -30,10 +30,10 @@ def adjust_decision_based_on_sentiment(sentiment_data, trade_log, sentiment_thre
         adjusted_decision[(sentiment_score > sentiment_threshold)] = "BUY"
         adjusted_decision[(sentiment_score < -sentiment_threshold)] = "SELL"
         
-        logging.info("✅ Sentimentbaserade beslut genererade.")
+        logging.info("Sentimentbaserade beslut genererade.")
         return adjusted_decision
     except Exception as e:
-        logging.error(f"❌ Fel vid justering av beslut baserat på sentiment: {str(e)}")
+        logging.error(f"Fel vid justering av beslut baserat på sentiment: {str(e)}")
         return None
 
 # Exempelanrop
@@ -53,5 +53,5 @@ if __name__ == "__main__":
     })
     
     sentiment_adjusted_decision = adjust_decision_based_on_sentiment(sentiment_data, trade_log)
-    print(f"📢 Sentimentjusterade beslut:")
+    print(f"Sentimentjusterade beslut:")
     print(sentiment_adjusted_decision)
