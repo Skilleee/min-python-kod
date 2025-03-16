@@ -26,9 +26,6 @@ from utils.process_manager import manage_processes
 def main():
     logging.info("🚀 AI Trading Bot startar...")
 
-    print("Test commit")  # Extra mellanslag
-    print("Test commit")  # Extra mellanslag
-
     # Hämta och bearbeta data
     market_data = fetch_market_data()
     portfolio_data = load_portfolio_data()
