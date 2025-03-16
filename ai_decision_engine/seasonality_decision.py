@@ -15,10 +15,10 @@ def analyze_seasonality(historical_data):
         best_months = seasonal_performance.nlargest(3).index.tolist()
         worst_months = seasonal_performance.nsmallest(3).index.tolist()
         
-        logging.info(f"✅ Identifierade säsongsmönster. Bästa månader: {best_months}, Sämsta månader: {worst_months}")
+        logging.info(f"Identifierade säsongsmönster. Bästa månader: {best_months}, Sämsta månader: {worst_months}")
         return best_months, worst_months
     except Exception as e:
-        logging.error(f"❌ Fel vid analys av säsongsmönster: {str(e)}")
+        logging.error(f"Fel vid analys av säsongsmönster: {str(e)}")
         return None, None
 
 def adjust_decision_based_on_seasonality(historical_data, trade_log):
@@ -35,10 +35,10 @@ def adjust_decision_based_on_seasonality(historical_data, trade_log):
         adjusted_decision[trade_log["month"].isin(best_months)] = "BUY"
         adjusted_decision[trade_log["month"].isin(worst_months)] = "SELL"
         
-        logging.info("✅ Beslut justerade baserat på säsongsmönster.")
+        logging.info("Beslut justerade baserat på säsongsmönster.")
         return adjusted_decision
     except Exception as e:
-        logging.error(f"❌ Fel vid justering av beslut baserat på säsongsmönster: {str(e)}")
+        logging.error(f"Fel vid justering av beslut baserat på säsongsmönster: {str(e)}")
         return None
 
 # Exempelanrop
@@ -58,5 +58,5 @@ if __name__ == "__main__":
     })
     
     seasonal_adjusted_decision = adjust_decision_based_on_seasonality(historical_data, trade_log)
-    print(f"📢 Säsongsjusterade beslut:")
+    print(f"Säsongsjusterade beslut:")
     print(seasonal_adjusted_decision)
