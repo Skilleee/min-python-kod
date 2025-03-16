@@ -15,10 +15,10 @@ def calculate_risk_metrics(trade_log):
         max_drawdown = (trade_log["return"].cumsum().min())
         sharpe_ratio = trade_log["return"].mean() / volatility if volatility > 0 else 0
         
-        logging.info(f"Riskmått beräknade: Volatilitet={volatility:.4f}, Max Drawdown={max_drawdown:.4f}, Sharpe Ratio={sharpe_ratio:.4f}")
+        logging.info(f"✅ Riskmått beräknade: Volatilitet={volatility:.4f}, Max Drawdown={max_drawdown:.4f}, Sharpe Ratio={sharpe_ratio:.4f}")
         return {"volatility": volatility, "max_drawdown": max_drawdown, "sharpe_ratio": sharpe_ratio}
     except Exception as e:
-        logging.error(f"Fel vid beräkning av riskmått: {str(e)}")
+        logging.error(f"❌ Fel vid beräkning av riskmått: {str(e)}")
         return None
 
 def adjust_decision_based_on_risk(trade_log, risk_threshold=0.02):
@@ -34,10 +34,10 @@ def adjust_decision_based_on_risk(trade_log, risk_threshold=0.02):
         adjusted_decision[(trade_log["return"] > risk_threshold) & (risk_metrics["sharpe_ratio"] > 1)] = "BUY"
         adjusted_decision[(trade_log["return"] < -risk_threshold) | (risk_metrics["max_drawdown"] < -0.1)] = "SELL"
         
-        logging.info("Riskjusterade beslut genererade.")
+        logging.info("✅ Riskjusterade beslut genererade.")
         return adjusted_decision
     except Exception as e:
-        logging.error(f"Fel vid justering av beslut baserat på risk: {str(e)}")
+        logging.error(f"❌ Fel vid justering av beslut baserat på risk: {str(e)}")
         return None
 
 # Exempelanrop
@@ -51,5 +51,5 @@ if __name__ == "__main__":
     })
     
     risk_adjusted_decision = adjust_decision_based_on_risk(trade_log)
-    print(f"Riskjusterade beslut:")
+    print(f"📢 Riskjusterade beslut:")
     print(risk_adjusted_decision)
