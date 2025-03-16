@@ -20,10 +20,10 @@ def calculate_optimal_allocation(trade_log, risk_metrics, max_allocation=0.3, mi
         allocation = max_allocation * normalized_return - min_allocation * normalized_risk
         allocation = np.clip(allocation, min_allocation, max_allocation)
         
-        logging.info("✅ Kapitalallokering beräknad för varje handel.")
+        logging.info("Kapitalallokering beräknad för varje handel.")
         return allocation
     except Exception as e:
-        logging.error(f"❌ Fel vid beräkning av kapitalallokering: {str(e)}")
+        logging.error(f"Fel vid beräkning av kapitalallokering: {str(e)}")
         return None
 
 def adjust_allocation_based_on_market(trade_log, market_conditions):
@@ -38,10 +38,10 @@ def adjust_allocation_based_on_market(trade_log, market_conditions):
         }
         
         adjusted_allocation = trade_log["allocation"] * market_factor.get(market_conditions, 1.0)
-        logging.info("✅ Kapitalallokering justerad baserat på marknadsläge.")
+        logging.info("Kapitalallokering justerad baserat på marknadsläge.")
         return adjusted_allocation
     except Exception as e:
-        logging.error(f"❌ Fel vid justering av kapitalallokering: {str(e)}")
+        logging.error(f"Fel vid justering av kapitalallokering: {str(e)}")
         return None
 
 # Exempelanrop
@@ -65,5 +65,5 @@ if __name__ == "__main__":
     adjusted_allocation = adjust_allocation_based_on_market(trade_log, "bullish")
     trade_log["adjusted_allocation"] = adjusted_allocation
     
-    print(f"📢 Kapitalallokering efter justering:")
+    print(f"Kapitalallokering efter justering:")
     print(trade_log[["symbol", "allocation", "adjusted_allocation"]])
