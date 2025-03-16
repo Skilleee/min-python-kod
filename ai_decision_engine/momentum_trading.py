@@ -11,10 +11,10 @@ def calculate_momentum(prices, period=14):
     """
     try:
         momentum = prices - prices.shift(period)
-        logging.info(f"✅ Momentum beräknat för {period} perioder.")
+        logging.info(f"Momentum beräknat för {period} perioder.")
         return momentum
     except Exception as e:
-        logging.error(f"❌ Fel vid beräkning av momentum: {str(e)}")
+        logging.error(f"Fel vid beräkning av momentum: {str(e)}")
         return None
 
 def relative_strength_index(prices, period=14):
@@ -29,10 +29,10 @@ def relative_strength_index(prices, period=14):
         rs = gain / loss
         rsi = 100 - (100 / (1 + rs))
         
-        logging.info(f"✅ RSI beräknat för {period} perioder.")
+        logging.info(f"RSI beräknat för {period} perioder.")
         return rsi
     except Exception as e:
-        logging.error(f"❌ Fel vid beräkning av RSI: {str(e)}")
+        logging.error(f"Fel vid beräkning av RSI: {str(e)}")
         return None
 
 def momentum_strategy(prices, period=14, rsi_threshold=50):
@@ -47,10 +47,10 @@ def momentum_strategy(prices, period=14, rsi_threshold=50):
         signals[(momentum > 0) & (rsi > rsi_threshold)] = "BUY"
         signals[(momentum < 0) & (rsi < rsi_threshold)] = "SELL"
         
-        logging.info(f"✅ Momentumstrategi genererad.")
+        logging.info(f"Momentumstrategi genererad.")
         return signals
     except Exception as e:
-        logging.error(f"❌ Fel vid beräkning av momentumstrategi: {str(e)}")
+        logging.error(f"Fel vid beräkning av momentumstrategi: {str(e)}")
         return None
 
 # Exempelanrop
