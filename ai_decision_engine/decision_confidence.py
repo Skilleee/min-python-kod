@@ -15,10 +15,10 @@ def calculate_decision_confidence(trade_signals, risk_metrics, sentiment_score):
         sentiment_factor = (sentiment_score + 1) / 2  # Normaliserad till 0-1
         
         confidence_score = (signal_strength * 0.5) + (risk_factor * 0.3) + (sentiment_factor * 0.2)
-        logging.info("✅ Konfidensnivå beräknad för handelsbeslut.")
+        logging.info("Konfidensnivå beräknad för handelsbeslut.")
         return confidence_score
     except Exception as e:
-        logging.error(f"❌ Fel vid beräkning av konfidensnivå: {str(e)}")
+        logging.error(f"Fel vid beräkning av konfidensnivå: {str(e)}")
         return None
 
 def adjust_decision_based_on_confidence(trade_signals, confidence_threshold=0.7):
@@ -32,10 +32,10 @@ def adjust_decision_based_on_confidence(trade_signals, confidence_threshold=0.7)
         adjusted_decision[confidence_score > confidence_threshold] = "BUY"
         adjusted_decision[confidence_score < (1 - confidence_threshold)] = "SELL"
         
-        logging.info("✅ Handelsbeslut justerade baserat på konfidensnivå.")
+        logging.info("Handelsbeslut justerade baserat på konfidensnivå.")
         return adjusted_decision
     except Exception as e:
-        logging.error(f"❌ Fel vid justering av beslut baserat på konfidensnivå: {str(e)}")
+        logging.error(f"Fel vid justering av beslut baserat på konfidensnivå: {str(e)}")
         return None
 
 # Exempelanrop
@@ -49,5 +49,5 @@ if __name__ == "__main__":
     })
     
     confidence_adjusted_decision = adjust_decision_based_on_confidence(trade_signals)
-    print(f"📢 Beslut baserade på konfidensnivå:")
+    print(f"Beslut baserade på konfidensnivå:")
     print(confidence_adjusted_decision)
