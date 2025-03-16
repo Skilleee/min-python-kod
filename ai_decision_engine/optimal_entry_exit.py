@@ -11,10 +11,10 @@ def moving_average(prices, window=20):
     """
     try:
         ma = prices.rolling(window=window).mean()
-        logging.info(f"✅ Glidande medelvärde ({window} dagar) beräknat.")
+        logging.info(f"Glidande medelvärde ({window} dagar) beräknat.")
         return ma
     except Exception as e:
-        logging.error(f"❌ Fel vid beräkning av glidande medelvärde: {str(e)}")
+        logging.error(f"Fel vid beräkning av glidande medelvärde: {str(e)}")
         return None
 
 def bollinger_bands(prices, window=20, num_std=2):
@@ -26,10 +26,10 @@ def bollinger_bands(prices, window=20, num_std=2):
         std_dev = prices.rolling(window=window).std()
         upper_band = sma + (std_dev * num_std)
         lower_band = sma - (std_dev * num_std)
-        logging.info(f"✅ Bollinger Bands beräknat med {window}-dagars fönster och {num_std} standardavvikelser.")
+        logging.info(f"Bollinger Bands beräknat med {window}-dagars fönster och {num_std} standardavvikelser.")
         return upper_band, lower_band
     except Exception as e:
-        logging.error(f"❌ Fel vid beräkning av Bollinger Bands: {str(e)}")
+        logging.error(f"Fel vid beräkning av Bollinger Bands: {str(e)}")
         return None, None
 
 def optimal_entry_exit_strategy(prices, window=20, num_std=2):
@@ -41,10 +41,10 @@ def optimal_entry_exit_strategy(prices, window=20, num_std=2):
         signals = pd.Series(index=prices.index, dtype="object")
         signals[prices < lower_band] = "BUY"
         signals[prices > upper_band] = "SELL"
-        logging.info("✅ Optimal entry/exit-strategi beräknad.")
+        logging.info("Optimal entry/exit-strategi beräknad.")
         return signals
     except Exception as e:
-        logging.error(f"❌ Fel vid generering av entry/exit-strategi: {str(e)}")
+        logging.error(f"Fel vid generering av entry/exit-strategi: {str(e)}")
         return None
 
 # Exempelanrop
@@ -54,10 +54,10 @@ if __name__ == "__main__":
     simulated_prices = pd.Series(np.cumsum(np.random.randn(100)) + 100)
     
     ma_20 = moving_average(simulated_prices)
-    print(f"📈 20-dagars glidande medelvärde:\n{ma_20.tail()}")
+    print(f"20-dagars glidande medelvärde:\n{ma_20.tail()}")
     
     upper_band, lower_band = bollinger_bands(simulated_prices)
-    print(f"📊 Bollinger Bands:\nÖvre band:\n{upper_band.tail()}\nNedre band:\n{lower_band.tail()}")
+    print(f"Bollinger Bands:\nÖvre band:\n{upper_band.tail()}\nNedre band:\n{lower_band.tail()}")
     
     signals = optimal_entry_exit_strategy(simulated_prices)
-    print(f"📢 Entry/Exit-signaler:\n{signals.tail()}")
+    print(f"Entry/Exit-signaler:\n{signals.tail()}")
