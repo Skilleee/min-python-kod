@@ -15,10 +15,10 @@ def evaluate_trade_performance(trade_log):
         win_rate = trade_log["win"].mean()
         avg_return = trade_log["return"].mean()
         
-        logging.info(f"Handelsutvärdering klar: Win rate: {win_rate:.2%}, Genomsnittlig avkastning: {avg_return:.2%}")
+        logging.info(f"✅ Handelsutvärdering klar: Win rate: {win_rate:.2%}, Genomsnittlig avkastning: {avg_return:.2%}")
         return {"win_rate": win_rate, "avg_return": avg_return}
     except Exception as e:
-        logging.error(f"Fel vid handelsutvärdering: {str(e)}")
+        logging.error(f"❌ Fel vid handelsutvärdering: {str(e)}")
         return None
 
 def refine_trading_strategy(trade_log, threshold=0.02):
@@ -29,10 +29,10 @@ def refine_trading_strategy(trade_log, threshold=0.02):
         good_trades = trade_log[trade_log["return"] > threshold]
         bad_trades = trade_log[trade_log["return"] < -threshold]
         
-        logging.info(f"Strategianalys klar: {len(good_trades)} bra trades, {len(bad_trades)} dåliga trades")
+        logging.info(f"✅ Strategianalys klar: {len(good_trades)} bra trades, {len(bad_trades)} dåliga trades")
         return {"good_trades": len(good_trades), "bad_trades": len(bad_trades)}
     except Exception as e:
-        logging.error(f"Fel vid strategianalys: {str(e)}")
+        logging.error(f"❌ Fel vid strategianalys: {str(e)}")
         return None
 
 # Exempelanrop
@@ -46,9 +46,9 @@ if __name__ == "__main__":
     })
     
     performance = evaluate_trade_performance(trade_log)
-    print(f"Handelsutvärdering:
+    print(f"📊 Handelsutvärdering:
 {performance}")
     
     strategy_refinement = refine_trading_strategy(trade_log)
-    print(f"Justerad strategi:
+    print(f"🔍 Justerad strategi:
 {strategy_refinement}")
