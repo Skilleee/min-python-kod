@@ -11,10 +11,10 @@ def calculate_sector_performance(sector_data):
     """
     try:
         performance = sector_data.mean()
-        logging.info(f"Sektorprestanda beräknad: {performance}")
+        logging.info(f"✅ Sektorprestanda beräknad: {performance}")
         return performance
     except Exception as e:
-        logging.error(f"Fel vid beräkning av sektorprestanda: {str(e)}")
+        logging.error(f"❌ Fel vid beräkning av sektorprestanda: {str(e)}")
         return None
 
 def adjust_sector_exposure(portfolio, sector_performance, threshold=0.02):
@@ -28,10 +28,10 @@ def adjust_sector_exposure(portfolio, sector_performance, threshold=0.02):
                 adjusted_exposure[sector] *= 1.1  # Öka exponering
             elif performance < -threshold:
                 adjusted_exposure[sector] *= 0.9  # Minska exponering
-        logging.info(f"Sektorallokering justerad: {adjusted_exposure}")
+        logging.info(f"✅ Sektorallokering justerad: {adjusted_exposure}")
         return adjusted_exposure
     except Exception as e:
-        logging.error(f"Fel vid justering av sektorallokering: {str(e)}")
+        logging.error(f"❌ Fel vid justering av sektorallokering: {str(e)}")
         return None
 
 # Exempelanrop
@@ -43,8 +43,10 @@ if __name__ == "__main__":
     )
     
     sector_performance = calculate_sector_performance(sector_data)
-    print(f"Sektorprestanda: {sector_performance}")
+    print(f"📊 Sektorprestanda:
+{sector_performance}")
     
     portfolio_allocation = {"Tech": 0.25, "Finance": 0.25, "Healthcare": 0.25, "Energy": 0.25}
     adjusted_allocation = adjust_sector_exposure(portfolio_allocation, sector_performance)
-    print(f"Justerad sektorallokering: {adjusted_allocation}")
+    print(f"📈 Justerad sektorallokering:
+{adjusted_allocation}")
