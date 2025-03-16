@@ -43,10 +43,10 @@ if __name__ == "__main__":
     )
     
     sector_performance = calculate_sector_performance(sector_data)
-    print(f"📊 Sektorprestanda:
+    print(f"Sektorprestanda:
 {sector_performance}")
     
     portfolio_allocation = {"Tech": 0.25, "Finance": 0.25, "Healthcare": 0.25, "Energy": 0.25}
     adjusted_allocation = adjust_sector_exposure(portfolio_allocation, sector_performance)
-    print(f"📈 Justerad sektorallokering:
+    print(f"Justerad sektorallokering:
 {adjusted_allocation}")
