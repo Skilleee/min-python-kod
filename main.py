@@ -22,51 +22,53 @@ from live_trading.telegram_signal_sender import send_telegram_alerts
 from utils.bot_scheduler import schedule_tasks
 from utils.process_manager import manage_processes
 
+
 def main():
     logging.info("🚀 AI Trading Bot startar...")
 
-    print(  "Test commit"  ) # Extra mellanslag
-    print(  "Test commit"  ) # Extra mellanslag
-    
+    print("Test commit")  # Extra mellanslag
+    print("Test commit")  # Extra mellanslag
+
     # Hämta och bearbeta data
     market_data = fetch_market_data()
     portfolio_data = load_portfolio_data()
     sentiment = analyze_sentiment()
     macro_data = fetch_macro_data()
     news = analyze_market_news()
-    
+
     # Förbered data
     normalized_data = normalize_data(market_data)
     volatility = analyze_volatility(market_data)
-    
+
     # AI Beslutsfattande
     strategy = generate_trading_strategy(normalized_data, sentiment, macro_data)
     optimal_entry = optimal_entry_exit_strategy(strategy)
     refined_strategy = refine_strategy(optimal_entry, execution_feedback=True)
-    
+
     # Riskhantering
     stop_loss = adaptive_stop_loss(refined_strategy)
     var_analysis = calculate_var(market_data)
     monte_carlo_sim = monte_carlo_simulation(100000, 0.07, 0.2)
-    
+
     # Portföljhantering
     rebalanced_portfolio = rebalancing(portfolio_data, refined_strategy)
     hedging_plan = hedging_strategies(rebalanced_portfolio)
-    
+
     # Generera rapporter
     generate_report(rebalanced_portfolio)
     generate_weekly_report(market_data)
     analyze_macro_event(macro_data)
-    
+
     # Live Trading Signalering
     live_signals = generate_live_signals(market_data)
     send_telegram_alerts(live_signals)
-    
+
     # Systemhantering
     schedule_tasks()
     manage_processes()
-    
+
     logging.info("✅ AI Trading Bot körs och analyserar marknaden.")
+
 
 if __name__ == "__main__":
     main()

@@ -5,6 +5,7 @@ import logging
 # Konfigurera loggning
 logging.basicConfig(filename="drawdown_analysis.log", level=logging.INFO)
 
+
 def calculate_max_drawdown(returns):
     """
     Beräknar den maximala drawdownen i en portfölj.
@@ -14,12 +15,13 @@ def calculate_max_drawdown(returns):
         peak = cumulative_returns.cummax()
         drawdown = (cumulative_returns - peak) / peak
         max_drawdown = drawdown.min()
-        
+
         logging.info(f"✅ Maximal drawdown beräknad: {max_drawdown:.2%}")
         return max_drawdown
     except Exception as e:
         logging.error(f"❌ Fel vid beräkning av max drawdown: {str(e)}")
         return None
+
 
 # Exempelanrop
 if __name__ == "__main__":

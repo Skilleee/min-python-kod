@@ -5,6 +5,7 @@ import logging
 # Konfigurera loggning
 logging.basicConfig(filename="crypto_risk.log", level=logging.INFO)
 
+
 def calculate_volatility(price_series, window=30):
     """
     Beräknar volatiliteten för en kryptovaluta över ett angivet fönster.
@@ -16,6 +17,7 @@ def calculate_volatility(price_series, window=30):
     except Exception as e:
         logging.error(f"❌ Fel vid beräkning av volatilitet: {str(e)}")
         return None
+
 
 def calculate_max_drawdown(price_series):
     """
@@ -32,6 +34,7 @@ def calculate_max_drawdown(price_series):
         logging.error(f"❌ Fel vid beräkning av max drawdown: {str(e)}")
         return None
 
+
 def risk_score(price_series, window=30):
     """
     Kombinerar volatilitet och max drawdown för att generera en riskpoäng.
@@ -39,7 +42,7 @@ def risk_score(price_series, window=30):
     try:
         vol = calculate_volatility(price_series, window)
         drawdown = calculate_max_drawdown(price_series)
-        
+
         if vol is not None and drawdown is not None:
             risk_score = (vol.mean() + abs(drawdown)) / 2  # Enkel riskmodell
             logging.info(f"✅ Riskpoäng beräknad: {risk_score:.2f}")
@@ -50,17 +53,18 @@ def risk_score(price_series, window=30):
         logging.error(f"❌ Fel vid riskpoängsberäkning: {str(e)}")
         return None
 
+
 # Exempelanrop
 if __name__ == "__main__":
     # Simulerad kryptoprisdata
     np.random.seed(42)
     simulated_prices = pd.Series(np.cumsum(np.random.randn(100)) + 50000)
-    
+
     volatility = calculate_volatility(simulated_prices)
     print(f"📊 Volatilitet: {volatility.tail()}")
-    
+
     max_dd = calculate_max_drawdown(simulated_prices)
     print(f"📉 Max Drawdown: {max_dd:.2%}")
-    
+
     risk = risk_score(simulated_prices)
     print(f"⚠️ Riskpoäng: {risk:.2f}")

@@ -5,6 +5,7 @@ import logging
 # Konfigurera loggning
 logging.basicConfig(filename="crypto_market_data.log", level=logging.INFO)
 
+
 def fetch_crypto_prices(symbol):
     """
     Hämtar aktuell prisdata för en kryptovaluta från en API.
@@ -18,6 +19,7 @@ def fetch_crypto_prices(symbol):
     except Exception as e:
         logging.error(f"❌ Fel vid hämtning av kryptovalutapriser: {str(e)}")
         return None
+
 
 def fetch_onchain_data(symbol):
     """
@@ -33,11 +35,12 @@ def fetch_onchain_data(symbol):
         logging.error(f"❌ Fel vid hämtning av on-chain data: {str(e)}")
         return None
 
+
 # Exempelanrop
 if __name__ == "__main__":
     crypto_symbol = "bitcoin"
     crypto_prices = fetch_crypto_prices(crypto_symbol)
     onchain_data = fetch_onchain_data(crypto_symbol)
-    
+
     print(f"📢 Kryptoprisdata:", crypto_prices)
     print(f"📢 On-chain analysdata:", onchain_data)

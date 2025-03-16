@@ -6,6 +6,7 @@ from scipy.optimize import minimize
 # Konfigurera loggning
 logging.basicConfig(filename="strategy_auto_optimizer.log", level=logging.INFO)
 
+
 def evaluate_strategy(params, price_series):
     """
     Utvärderar en handelsstrategi baserat på givna parametrar och returnerar dess avkastning.
@@ -23,25 +24,37 @@ def evaluate_strategy(params, price_series):
         logging.error(f"❌ Fel vid strategiutvärdering: {str(e)}")
         return np.inf
 
+
 def optimize_strategy(price_series, param_bounds=((5, 50), (50, 200))):
     """
     Optimerar en strategi genom att hitta bästa parametrarna för glidande medelvärden.
     """
     try:
         initial_guess = [10, 100]
-        result = minimize(evaluate_strategy, initial_guess, args=(price_series,), bounds=param_bounds, method='L-BFGS-B')
+        result = minimize(
+            evaluate_strategy,
+            initial_guess,
+            args=(price_series,),
+            bounds=param_bounds,
+            method="L-BFGS-B",
+        )
         optimized_params = result.x
-        logging.info(f"✅ Strategioptimering klar: Short MA={optimized_params[0]:.0f}, Long MA={optimized_params[1]:.0f}")
+        logging.info(
+            f"✅ Strategioptimering klar: Short MA={optimized_params[0]:.0f}, Long MA={optimized_params[1]:.0f}"
+        )
         return optimized_params
     except Exception as e:
         logging.error(f"❌ Fel vid strategioptimering: {str(e)}")
         return None
+
 
 # Exempelanrop
 if __name__ == "__main__":
     # Simulerad prisdata
     np.random.seed(42)
     simulated_prices = pd.Series(np.cumsum(np.random.randn(100)) + 100)
-    
+
     optimized_params = optimize_strategy(simulated_prices)
-    print(f"🔍 Optimerade parametrar: Short MA={optimized_params[0]:.0f}, Long MA={optimized_params[1]:.0f}")
+    print(
+        f"🔍 Optimerade parametrar: Short MA={optimized_params[0]:.0f}, Long MA={optimized_params[1]:.0f}"
+    )

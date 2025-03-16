@@ -5,6 +5,7 @@ import logging
 # Konfigurera loggning
 logging.basicConfig(filename="etf_fund_flows.log", level=logging.INFO)
 
+
 def fetch_etf_flows(etf_symbol):
     """
     Hämtar kapitalflöden för en specifik ETF.
@@ -19,9 +20,10 @@ def fetch_etf_flows(etf_symbol):
         logging.error(f"❌ Fel vid hämtning av ETF-flöden: {str(e)}")
         return None
 
+
 # Exempelanrop
 if __name__ == "__main__":
     etf_symbol = "SPY"
     etf_flows = fetch_etf_flows(etf_symbol)
-    
+
     print(f"📢 ETF-flödesdata:", etf_flows)

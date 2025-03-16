@@ -6,6 +6,7 @@ import subprocess
 # Konfigurera loggning
 logging.basicConfig(filename="fail_safe_mechanism.log", level=logging.INFO)
 
+
 def restart_bot():
     """
     Startar om AI-trading boten vid oväntade krascher.
@@ -16,6 +17,7 @@ def restart_bot():
         logging.info("✅ Boten har startats om.")
     except Exception as e:
         logging.error(f"❌ Fel vid omstart av boten: {str(e)}")
+
 
 def check_system_health():
     """
@@ -32,6 +34,7 @@ def check_system_health():
     except Exception as e:
         logging.error(f"❌ Fel vid systemhälsokontroll: {str(e)}")
 
+
 def monitor_bot(interval=60):
     """
     Kontinuerligt övervakar AI-boten och återställer den vid krasch.
@@ -40,6 +43,7 @@ def monitor_bot(interval=60):
         logging.info("🔍 Övervakar AI-trading botens status...")
         check_system_health()
         time.sleep(interval)
+
 
 # Exempelanrop
 if __name__ == "__main__":

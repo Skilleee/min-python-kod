@@ -4,6 +4,7 @@ import logging
 # Konfigurera loggning
 logging.basicConfig(filename="live_sentiment_tracking.log", level=logging.INFO)
 
+
 def fetch_live_sentiment(keyword):
     """
     Hämtar sentimentdata från sociala medier och nyheter i realtid.
@@ -17,6 +18,7 @@ def fetch_live_sentiment(keyword):
     except Exception as e:
         logging.error(f"❌ Fel vid hämtning av live-sentimentdata: {str(e)}")
         return None
+
 
 # Exempelanrop
 if __name__ == "__main__":

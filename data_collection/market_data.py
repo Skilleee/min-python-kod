@@ -5,6 +5,7 @@ from datetime import datetime
 # Skapa en loggfil
 logging.basicConfig(filename="market_data.log", level=logging.INFO)
 
+
 # Funktion för att hämta aktiepriser från Yahoo Finance
 def fetch_stock_price(symbol):
     """
@@ -13,11 +14,14 @@ def fetch_stock_price(symbol):
     try:
         stock = yf.Ticker(symbol)
         latest_price = stock.history(period="1d")["Close"][-1]
-        logging.info(f"[{datetime.now()}] ✅ Hämtade data för {symbol}: {latest_price} USD")
+        logging.info(
+            f"[{datetime.now()}] ✅ Hämtade data för {symbol}: {latest_price} USD"
+        )
         return latest_price
     except Exception as e:
         logging.error(f"[{datetime.now()}] ❌ Fel vid hämtning av {symbol}: {str(e)}")
         return None
+
 
 # Funktion för att hämta flera aktier samtidigt
 def fetch_multiple_stocks(symbols):
@@ -31,6 +35,7 @@ def fetch_multiple_stocks(symbols):
             stock_prices[symbol] = price
     return stock_prices
 
+
 # Funktion för att hämta valutakurser från Yahoo Finance
 def fetch_forex_data(base_currency, quote_currency):
     """
@@ -39,11 +44,16 @@ def fetch_forex_data(base_currency, quote_currency):
     try:
         forex_pair = f"{base_currency}{quote_currency}=X"
         forex_price = fetch_stock_price(forex_pair)
-        logging.info(f"[{datetime.now()}] 💱 Växelkurs {base_currency}/{quote_currency}: {forex_price}")
+        logging.info(
+            f"[{datetime.now()}] 💱 Växelkurs {base_currency}/{quote_currency}: {forex_price}"
+        )
         return forex_price
     except Exception as e:
-        logging.error(f"[{datetime.now()}] ❌ Fel vid hämtning av växelkurs {base_currency}/{quote_currency}: {str(e)}")
+        logging.error(
+            f"[{datetime.now()}] ❌ Fel vid hämtning av växelkurs {base_currency}/{quote_currency}: {str(e)}"
+        )
         return None
+
 
 # Funktion för att hämta råvarupriser från Yahoo Finance
 def fetch_commodity_price(commodity):
@@ -51,12 +61,13 @@ def fetch_commodity_price(commodity):
     Hämtar realtidspris för råvaror, t.ex. guld (XAU/USD) eller olja (WTI).
     """
     commodity_map = {"gold": "GC=F", "silver": "SI=F", "oil": "CL=F"}
-    
+
     if commodity not in commodity_map:
         logging.error(f"[{datetime.now()}] ❌ Ogiltig råvara: {commodity}")
         return None
 
     return fetch_stock_price(commodity_map[commodity])
+
 
 # Funktion för att hämta orderflöden (simulerad för Yahoo Finance)
 def fetch_order_flow(symbol):
@@ -68,13 +79,18 @@ def fetch_order_flow(symbol):
         order_flow_data = {
             "buy_orders": 1200,
             "sell_orders": 800,
-            "net_flow": 400  # Positivt värde indikerar köparövertag
+            "net_flow": 400,  # Positivt värde indikerar köparövertag
         }
-        logging.info(f"[{datetime.now()}] 📊 Orderflöde för {symbol}: {order_flow_data}")
+        logging.info(
+            f"[{datetime.now()}] 📊 Orderflöde för {symbol}: {order_flow_data}"
+        )
         return order_flow_data
     except Exception as e:
-        logging.error(f"[{datetime.now()}] ❌ Fel vid hämtning av orderflöde för {symbol}: {str(e)}")
+        logging.error(
+            f"[{datetime.now()}] ❌ Fel vid hämtning av orderflöde för {symbol}: {str(e)}"
+        )
         return None
+
 
 # Exempelanrop
 if __name__ == "__main__":

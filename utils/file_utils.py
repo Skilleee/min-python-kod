@@ -5,6 +5,7 @@ import logging
 # Konfigurera loggning
 logging.basicConfig(filename="file_utils.log", level=logging.INFO)
 
+
 def save_to_json(data, file_path):
     """
     Sparar data till en JSON-fil.
@@ -15,6 +16,7 @@ def save_to_json(data, file_path):
         logging.info("✅ Data sparad till JSON.")
     except Exception as e:
         logging.error(f"❌ Fel vid sparande av JSON: {str(e)}")
+
 
 def load_from_json(file_path):
     """
@@ -29,6 +31,7 @@ def load_from_json(file_path):
         logging.error(f"❌ Fel vid inläsning av JSON: {str(e)}")
         return None
 
+
 def save_to_csv(data, file_path):
     """
     Sparar data till en CSV-fil.
@@ -38,6 +41,7 @@ def save_to_csv(data, file_path):
         logging.info("✅ Data sparad till CSV.")
     except Exception as e:
         logging.error(f"❌ Fel vid sparande av CSV: {str(e)}")
+
 
 # Exempelanrop
 if __name__ == "__main__":

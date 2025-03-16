@@ -5,6 +5,7 @@ import logging
 # Konfigurera loggning
 logging.basicConfig(filename="commodity_bond_data.log", level=logging.INFO)
 
+
 def fetch_commodity_prices(commodity):
     """
     Hämtar aktuell prisdata för en råvara.
@@ -18,6 +19,7 @@ def fetch_commodity_prices(commodity):
     except Exception as e:
         logging.error(f"❌ Fel vid hämtning av råvarupriser: {str(e)}")
         return None
+
 
 def fetch_bond_yields(country):
     """
@@ -33,13 +35,14 @@ def fetch_bond_yields(country):
         logging.error(f"❌ Fel vid hämtning av obligationsräntor: {str(e)}")
         return None
 
+
 # Exempelanrop
 if __name__ == "__main__":
     commodity = "gold"
     country = "USA"
-    
+
     gold_prices = fetch_commodity_prices(commodity)
     bond_yields = fetch_bond_yields(country)
-    
+
     print(f"📢 Råvarupriser:", gold_prices)
     print(f"📢 Obligationsräntor:", bond_yields)

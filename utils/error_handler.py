@@ -3,6 +3,7 @@ import logging
 # Konfigurera loggning
 logging.basicConfig(filename="error_handler.log", level=logging.INFO)
 
+
 def log_error(error_message):
     """
     Loggar ett fel och returnerar ett standardiserat svar.
@@ -13,6 +14,7 @@ def log_error(error_message):
     except Exception as e:
         logging.error(f"❌ Fel vid loggning av fel: {str(e)}")
         return {"status": "error", "message": "Okänt fel"}
+
 
 # Exempelanrop
 if __name__ == "__main__":

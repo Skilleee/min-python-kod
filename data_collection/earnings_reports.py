@@ -5,6 +5,7 @@ import logging
 # Konfigurera loggning
 logging.basicConfig(filename="earnings_reports.log", level=logging.INFO)
 
+
 def fetch_earnings_report(symbol):
     """
     Hämtar kvartalsvisa vinstdata för ett företag.
@@ -18,6 +19,7 @@ def fetch_earnings_report(symbol):
     except Exception as e:
         logging.error(f"❌ Fel vid hämtning av vinstdata: {str(e)}")
         return None
+
 
 def analyze_earnings_surprise(symbol):
     """
@@ -34,11 +36,12 @@ def analyze_earnings_surprise(symbol):
         logging.error(f"❌ Fel vid analys av vinstöverraskning: {str(e)}")
         return None
 
+
 # Exempelanrop
 if __name__ == "__main__":
     stock_symbol = "AAPL"
     earnings_data = fetch_earnings_report(stock_symbol)
     earnings_surprise = analyze_earnings_surprise(stock_symbol)
-    
+
     print(f"📢 Kvartalsrapporter:", earnings_data)
     print(f"📢 Vinstöverraskning:", earnings_surprise)

@@ -10,6 +10,7 @@ logging.basicConfig(filename="news_analysis.log", level=logging.INFO)
 NEWS_API_URL = "https://newsapi.org/v2/everything"
 API_KEY = "YOUR_NEWS_API_KEY"  # Ersätt med din API-nyckel
 
+
 def fetch_news(keyword, count=10):
     """
     Hämtar de senaste nyheterna relaterade till en viss aktie eller marknad.
@@ -19,16 +20,21 @@ def fetch_news(keyword, count=10):
             "q": keyword,
             "language": "en",
             "sortBy": "publishedAt",
-            "apiKey": API_KEY
+            "apiKey": API_KEY,
         }
         response = requests.get(NEWS_API_URL, params=params)
         data = response.json()
         articles = [article["title"] for article in data.get("articles", [])[:count]]
-        logging.info(f"[{datetime.now()}] ✅ Hämtade {len(articles)} nyhetsartiklar för {keyword}")
+        logging.info(
+            f"[{datetime.now()}] ✅ Hämtade {len(articles)} nyhetsartiklar för {keyword}"
+        )
         return articles
     except Exception as e:
-        logging.error(f"[{datetime.now()}] ❌ Fel vid hämtning av nyheter för {keyword}: {str(e)}")
+        logging.error(
+            f"[{datetime.now()}] ❌ Fel vid hämtning av nyheter för {keyword}: {str(e)}"
+        )
         return []
+
 
 def analyze_news_sentiment(news_articles):
     """
@@ -36,12 +42,21 @@ def analyze_news_sentiment(news_articles):
     """
     if not news_articles:
         return "neutral"
-    
-    total_polarity = sum(TextBlob(article).sentiment.polarity for article in news_articles) / len(news_articles)
-    sentiment = "positivt" if total_polarity > 0 else "negativt" if total_polarity < 0 else "neutral"
-    
-    logging.info(f"[{datetime.now()}] 📊 Sentimentanalys av nyheter: {sentiment} (Polarity: {total_polarity})")
+
+    total_polarity = sum(
+        TextBlob(article).sentiment.polarity for article in news_articles
+    ) / len(news_articles)
+    sentiment = (
+        "positivt"
+        if total_polarity > 0
+        else "negativt" if total_polarity < 0 else "neutral"
+    )
+
+    logging.info(
+        f"[{datetime.now()}] 📊 Sentimentanalys av nyheter: {sentiment} (Polarity: {total_polarity})"
+    )
     return sentiment
+
 
 def fetch_and_analyze_news(keyword):
     """
@@ -50,6 +65,7 @@ def fetch_and_analyze_news(keyword):
     news_articles = fetch_news(keyword)
     sentiment = analyze_news_sentiment(news_articles)
     return sentiment
+
 
 # Exempelanrop
 if __name__ == "__main__":

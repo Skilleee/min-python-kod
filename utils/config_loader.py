@@ -9,6 +9,7 @@ load_dotenv()
 # Konfigurera loggning
 logging.basicConfig(filename="config_loader.log", level=logging.INFO)
 
+
 def load_config(file_path="config.json"):
     """
     Laddar inställningar från en JSON-konfigurationsfil.
@@ -21,6 +22,7 @@ def load_config(file_path="config.json"):
     except Exception as e:
         logging.error(f"❌ Fel vid inläsning av konfigurationsfil: {str(e)}")
         return None
+
 
 def get_env_variable(var_name):
     """
@@ -37,6 +39,7 @@ def get_env_variable(var_name):
     except Exception as e:
         logging.error(f"❌ Fel vid inläsning av miljövariabel: {str(e)}")
         return None
+
 
 # Exempelanrop
 if __name__ == "__main__":

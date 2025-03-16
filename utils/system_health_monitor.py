@@ -5,6 +5,7 @@ import time
 # Konfigurera loggning
 logging.basicConfig(filename="system_health_monitor.log", level=logging.INFO)
 
+
 def check_cpu_usage(threshold=80):
     """
     Kontrollerar CPU-användning och varnar om den överstiger tröskeln.
@@ -15,6 +16,7 @@ def check_cpu_usage(threshold=80):
     else:
         logging.info(f"✅ CPU-användning: {cpu_usage}%")
     return cpu_usage
+
 
 def check_memory_usage(threshold=80):
     """
@@ -28,17 +30,19 @@ def check_memory_usage(threshold=80):
         logging.info(f"✅ Minnesanvändning: {memory_usage}%")
     return memory_usage
 
+
 def check_disk_usage(threshold=90):
     """
     Kontrollerar diskens utrymme och varnar om det blir för fullt.
     """
-    disk = psutil.disk_usage('/')
+    disk = psutil.disk_usage("/")
     disk_usage = disk.percent
     if disk_usage > threshold:
         logging.warning(f"⚠️ Hög diskanvändning: {disk_usage}%")
     else:
         logging.info(f"✅ Diskanvändning: {disk_usage}%")
     return disk_usage
+
 
 def monitor_system(interval=60):
     """
@@ -50,6 +54,7 @@ def monitor_system(interval=60):
         check_memory_usage()
         check_disk_usage()
         time.sleep(interval)
+
 
 # Exempelanrop
 if __name__ == "__main__":

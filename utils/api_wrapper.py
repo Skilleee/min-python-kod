@@ -4,6 +4,7 @@ import logging
 # Konfigurera loggning
 logging.basicConfig(filename="api_wrapper.log", level=logging.INFO)
 
+
 def make_api_request(url, params=None, headers=None):
     """
     Gör ett API-anrop och returnerar svaret.
@@ -17,6 +18,7 @@ def make_api_request(url, params=None, headers=None):
     except requests.exceptions.RequestException as e:
         logging.error(f"❌ Fel vid API-anrop: {str(e)}")
         return None
+
 
 # Exempelanrop
 if __name__ == "__main__":

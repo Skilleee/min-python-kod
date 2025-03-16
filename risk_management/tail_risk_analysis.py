@@ -5,6 +5,7 @@ import logging
 # Konfigurera loggning
 logging.basicConfig(filename="tail_risk_analysis.log", level=logging.INFO)
 
+
 def analyze_tail_risk(returns):
     """
     Analyserar tail risk i portföljens avkastning.
@@ -12,12 +13,15 @@ def analyze_tail_risk(returns):
     try:
         left_tail = np.percentile(returns, 5)
         right_tail = np.percentile(returns, 95)
-        
-        logging.info(f"✅ Tail risk analyserad: Left tail = {left_tail:.2%}, Right tail = {right_tail:.2%}")
+
+        logging.info(
+            f"✅ Tail risk analyserad: Left tail = {left_tail:.2%}, Right tail = {right_tail:.2%}"
+        )
         return left_tail, right_tail
     except Exception as e:
         logging.error(f"❌ Fel vid tail risk-analys: {str(e)}")
         return None, None
+
 
 # Exempelanrop
 if __name__ == "__main__":

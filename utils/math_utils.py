@@ -4,17 +4,19 @@ import logging
 # Konfigurera loggning
 logging.basicConfig(filename="math_utils.log", level=logging.INFO)
 
+
 def moving_average(data, window_size=5):
     """
     Beräknar glidande medelvärde.
     """
     try:
-        result = np.convolve(data, np.ones(window_size)/window_size, mode='valid')
+        result = np.convolve(data, np.ones(window_size) / window_size, mode="valid")
         logging.info("✅ Glidande medelvärde beräknat.")
         return result
     except Exception as e:
         logging.error(f"❌ Fel vid beräkning av glidande medelvärde: {str(e)}")
         return None
+
 
 def standard_deviation(data):
     """
@@ -27,6 +29,7 @@ def standard_deviation(data):
     except Exception as e:
         logging.error(f"❌ Fel vid beräkning av standardavvikelse: {str(e)}")
         return None
+
 
 # Exempelanrop
 if __name__ == "__main__":

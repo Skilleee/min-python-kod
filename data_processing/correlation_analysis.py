@@ -7,6 +7,7 @@ import matplotlib.pyplot as plt
 # Konfigurera loggning
 logging.basicConfig(filename="correlation_analysis.log", level=logging.INFO)
 
+
 def analyze_correlation(data):
     """
     Analyserar korrelation mellan variabler i datasetet.
@@ -18,6 +19,7 @@ def analyze_correlation(data):
     except Exception as e:
         logging.error(f"❌ Fel vid korrelationsanalys: {str(e)}")
         return None
+
 
 def plot_correlation_matrix(correlation_matrix):
     """
@@ -32,14 +34,17 @@ def plot_correlation_matrix(correlation_matrix):
     except Exception as e:
         logging.error(f"❌ Fel vid plottning av korrelationsmatris: {str(e)}")
 
+
 # Exempelanrop
 if __name__ == "__main__":
-    df = pd.DataFrame({
-        "feature1": np.random.rand(100),
-        "feature2": np.random.rand(100),
-        "feature3": np.random.rand(100) * 0.5 + np.random.rand(100) * 0.5
-    })
-    
+    df = pd.DataFrame(
+        {
+            "feature1": np.random.rand(100),
+            "feature2": np.random.rand(100),
+            "feature3": np.random.rand(100) * 0.5 + np.random.rand(100) * 0.5,
+        }
+    )
+
     correlation_matrix = analyze_correlation(df)
     print("📢 Korrelationer mellan features:")
     print(correlation_matrix)

@@ -5,6 +5,7 @@ import time
 # Konfigurera loggning
 logging.basicConfig(filename="process_manager.log", level=logging.INFO)
 
+
 def worker(task_name, duration):
     """
     Simulerar en bakgrundsprocess.
@@ -16,21 +17,23 @@ def worker(task_name, duration):
     except Exception as e:
         logging.error(f"❌ Fel i process {task_name}: {str(e)}")
 
+
 def manage_processes(tasks):
     """
     Hanterar flera parallella processer.
     """
     processes = []
-    
+
     for task_name, duration in tasks:
         process = multiprocessing.Process(target=worker, args=(task_name, duration))
         processes.append(process)
         process.start()
-    
+
     for process in processes:
         process.join()
-    
+
     logging.info("✅ Alla processer klara!")
+
 
 # Exempelanrop
 if __name__ == "__main__":

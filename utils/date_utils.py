@@ -5,6 +5,7 @@ import logging
 # Konfigurera loggning
 logging.basicConfig(filename="date_utils.log", level=logging.INFO)
 
+
 def convert_to_utc(local_time, timezone):
     """
     Konverterar lokal tid till UTC.
@@ -19,6 +20,7 @@ def convert_to_utc(local_time, timezone):
         logging.error(f"❌ Fel vid tidskonvertering: {str(e)}")
         return None
 
+
 def get_current_market_time():
     """
     Hämtar aktuell marknadstid i New York (EST).
@@ -31,6 +33,7 @@ def get_current_market_time():
     except Exception as e:
         logging.error(f"❌ Fel vid hämtning av marknadstid: {str(e)}")
         return None
+
 
 # Exempelanrop
 if __name__ == "__main__":

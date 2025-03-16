@@ -4,6 +4,7 @@ import logging
 # Konfigurera loggning
 logging.basicConfig(filename="data_fetcher.log", level=logging.INFO)
 
+
 def fetch_market_data(api_url, params=None):
     """
     Hämtar marknadsdata från en extern API.
@@ -17,6 +18,7 @@ def fetch_market_data(api_url, params=None):
     except requests.exceptions.RequestException as e:
         logging.error(f"❌ Fel vid API-anrop: {str(e)}")
         return None
+
 
 # Exempelanrop
 if __name__ == "__main__":

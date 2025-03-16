@@ -5,6 +5,7 @@ import logging
 # Konfigurera loggning
 logging.basicConfig(filename="dynamic_sector_exposure.log", level=logging.INFO)
 
+
 def calculate_sector_performance(sector_data):
     """
     Beräknar sektorns genomsnittliga avkastning över en viss period.
@@ -16,6 +17,7 @@ def calculate_sector_performance(sector_data):
     except Exception as e:
         logging.error(f"❌ Fel vid beräkning av sektorprestanda: {str(e)}")
         return None
+
 
 def adjust_sector_exposure(portfolio, sector_performance, threshold=0.02):
     """
@@ -34,6 +36,7 @@ def adjust_sector_exposure(portfolio, sector_performance, threshold=0.02):
         logging.error(f"❌ Fel vid justering av sektorallokering: {str(e)}")
         return None
 
+
 # Exempelanrop
 if __name__ == "__main__":
     # Simulerad data
@@ -41,10 +44,17 @@ if __name__ == "__main__":
     sector_data = pd.DataFrame(
         np.random.randn(100, len(sectors)) / 100, columns=sectors
     )
-    
+
     sector_performance = calculate_sector_performance(sector_data)
     print(f"📊 Sektorprestanda: {sector_performance}")
-    
-    portfolio_allocation = {"Tech": 0.25, "Finance": 0.25, "Healthcare": 0.25, "Energy": 0.25}
-    adjusted_allocation = adjust_sector_exposure(portfolio_allocation, sector_performance)
+
+    portfolio_allocation = {
+        "Tech": 0.25,
+        "Finance": 0.25,
+        "Healthcare": 0.25,
+        "Energy": 0.25,
+    }
+    adjusted_allocation = adjust_sector_exposure(
+        portfolio_allocation, sector_performance
+    )
     print(f"📈 Justerad sektorallokering: {adjusted_allocation}")

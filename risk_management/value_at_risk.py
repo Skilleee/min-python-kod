@@ -5,6 +5,7 @@ import logging
 # Konfigurera loggning
 logging.basicConfig(filename="value_at_risk.log", level=logging.INFO)
 
+
 def calculate_var(returns, confidence_level=0.95):
     """
     Beräknar Value at Risk (VaR) för en given portfölj.
@@ -16,6 +17,7 @@ def calculate_var(returns, confidence_level=0.95):
     except Exception as e:
         logging.error(f"❌ Fel vid beräkning av VaR: {str(e)}")
         return None
+
 
 # Exempelanrop
 if __name__ == "__main__":
