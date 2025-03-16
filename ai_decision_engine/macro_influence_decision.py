@@ -15,10 +15,10 @@ def analyze_macro_factors(macro_data):
         gdp_growth_impact = macro_data["gdp_growth"] * 0.7  # Högre BNP-tillväxt är positivt
         
         macro_score = interest_rate_impact + inflation_impact + gdp_growth_impact
-        logging.info(f"✅ Makroekonomisk påverkan beräknad: {macro_score:.4f}")
+        logging.info(f"Makroekonomisk påverkan beräknad: {macro_score:.4f}")
         return macro_score
     except Exception as e:
-        logging.error(f"❌ Fel vid analys av makrofaktorer: {str(e)}")
+        logging.error(f"Fel vid analys av makrofaktorer: {str(e)}")
         return None
 
 def adjust_decision_based_on_macro(macro_data, trade_log, threshold=0.5):
@@ -34,10 +34,10 @@ def adjust_decision_based_on_macro(macro_data, trade_log, threshold=0.5):
         adjusted_decision[(macro_score > threshold)] = "BUY"
         adjusted_decision[(macro_score < -threshold)] = "SELL"
         
-        logging.info("✅ Makroekonomiskt justerade beslut genererade.")
+        logging.info("Makroekonomiskt justerade beslut genererade.")
         return adjusted_decision
     except Exception as e:
-        logging.error(f"❌ Fel vid justering av beslut baserat på makrofaktorer: {str(e)}")
+        logging.error(f"Fel vid justering av beslut baserat på makrofaktorer: {str(e)}")
         return None
 
 # Exempelanrop
@@ -58,5 +58,5 @@ if __name__ == "__main__":
     })
     
     macro_adjusted_decision = adjust_decision_based_on_macro(macro_data, trade_log)
-    print(f"📢 Makroekonomiskt justerade beslut:")
+    print(f"Makroekonomiskt justerade beslut:")
     print(macro_adjusted_decision)
