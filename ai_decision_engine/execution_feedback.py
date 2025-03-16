@@ -46,9 +46,7 @@ if __name__ == "__main__":
     })
     
     performance = evaluate_trade_performance(trade_log)
-    print(f"📊 Handelsutvärdering:
-{performance}")
+    print(f"📊 Handelsutvärdering: {performance}")
     
     strategy_refinement = refine_trading_strategy(trade_log)
-    print(f"🔍 Justerad strategi:
-{strategy_refinement}")
+    print(f"🔍 Justerad strategi: {strategy_refinement}")
