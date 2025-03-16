@@ -26,6 +26,7 @@ def main():
     logging.info("🚀 AI Trading Bot startar...")
 
     print(  "Test commit"  ) # Extra mellanslag
+    print(  "Test commit"  ) # Extra mellanslag
     
     # Hämta och bearbeta data
     market_data = fetch_market_data()
