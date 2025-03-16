@@ -57,8 +57,7 @@ if __name__ == "__main__":
     simulated_prices = pd.Series(np.cumsum(np.random.randn(100)) + 50000)
     
     volatility = calculate_volatility(simulated_prices)
-    print(f"📊 Volatilitet:
-{volatility.tail()}")
+    print(f"📊 Volatilitet: {volatility.tail()}")
     
     max_dd = calculate_max_drawdown(simulated_prices)
     print(f"📉 Max Drawdown: {max_dd:.2%}")
