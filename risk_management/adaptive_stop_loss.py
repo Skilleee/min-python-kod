@@ -45,9 +45,7 @@ if __name__ == "__main__":
     })
     
     atr = calculate_atr(price_data)
-    print(f"📊 ATR:
-{atr.tail()}")
+    print(f"📊 ATR: {atr.tail()}")
     
     stop_loss = adaptive_stop_loss(price_data)
-    print(f"🚨 Adaptiv Stop-Loss:
-{stop_loss.tail()}")
+    print(f"🚨 Adaptiv Stop-Loss: {stop_loss.tail()}")
