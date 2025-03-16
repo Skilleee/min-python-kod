@@ -72,14 +72,14 @@ if __name__ == "__main__":
     simulated_prices = pd.Series(np.cumsum(np.random.randn(100)) + 100)
     
     volatility = calculate_volatility(simulated_prices)
-    print(f"📊 Volatilitet:
+    print(f"Volatilitet:
 {volatility.tail()}")
     
     max_dd = calculate_max_drawdown(simulated_prices)
-    print(f"📉 Max Drawdown: {max_dd:.2%}")
+    print(f"Max Drawdown: {max_dd:.2%}")
     
     var = value_at_risk(simulated_prices)
-    print(f"⚠️ Value at Risk (VaR): {var:.2%}")
+    print(f"Value at Risk (VaR): {var:.2%}")
     
     risk = risk_score(simulated_prices)
-    print(f"📊 Riskpoäng: {risk:.2f}")
+    print(f"Riskpoäng: {risk:.2f}")
