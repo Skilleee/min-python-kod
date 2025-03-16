@@ -16,10 +16,10 @@ def generate_momentum_strategy(data, short_window=20, long_window=50):
         data["long_ma"] = data["close"].rolling(window=long_window).mean()
         data["signal"] = np.where(data["short_ma"] > data["long_ma"], 1, -1)
         
-        logging.info(f"[{datetime.now()}] Momentum-strategi genererad med {short_window}/{long_window} glidande medelvärden.")
+        logging.info(f"[{datetime.now()}] ✅ Momentum-strategi genererad med {short_window}/{long_window} glidande medelvärden.")
         return data[["close", "short_ma", "long_ma", "signal"]]
     except Exception as e:
-        logging.error(f"[{datetime.now()}] Fel vid generering av momentum-strategi: {str(e)}")
+        logging.error(f"[{datetime.now()}] ❌ Fel vid generering av momentum-strategi: {str(e)}")
         return None
 
 # Funktion för att generera en mean reversion-strategi
@@ -34,10 +34,10 @@ def generate_mean_reversion_strategy(data, window=50, threshold=2):
         data["lower_band"] = data["moving_avg"] - (threshold * data["std_dev"])
         data["signal"] = np.where(data["close"] < data["lower_band"], 1, np.where(data["close"] > data["upper_band"], -1, 0))
         
-        logging.info(f"[{datetime.now()}] Mean reversion-strategi genererad med {window}-dagars Bollinger Bands.")
+        logging.info(f"[{datetime.now()}] ✅ Mean reversion-strategi genererad med {window}-dagars Bollinger Bands.")
         return data[["close", "moving_avg", "upper_band", "lower_band", "signal"]]
     except Exception as e:
-        logging.error(f"[{datetime.now()}] Fel vid generering av mean reversion-strategi: {str(e)}")
+        logging.error(f"[{datetime.now()}] ❌ Fel vid generering av mean reversion-strategi: {str(e)}")
         return None
 
 # Funktion för att kombinera strategier
@@ -49,10 +49,10 @@ def combine_strategies(momentum_data, mean_reversion_data):
         combined_data = momentum_data.copy()
         combined_data["combined_signal"] = momentum_data["signal"] + mean_reversion_data["signal"]
         
-        logging.info(f"[{datetime.now()}] Strategier kombinerade till en hybridmodell.")
+        logging.info(f"[{datetime.now()}] ✅ Strategier kombinerade till en hybridmodell.")
         return combined_data[["close", "combined_signal"]]
     except Exception as e:
-        logging.error(f"[{datetime.now()}] Fel vid kombination av strategier: {str(e)}")
+        logging.error(f"[{datetime.now()}] ❌ Fel vid kombination av strategier: {str(e)}")
         return None
 
 # Exempelanrop
