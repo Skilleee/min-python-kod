@@ -51,9 +51,9 @@ if __name__ == "__main__":
     simulated_y = pd.Series(np.random.choice([0, 1], p=[0.9, 0.1], size=1000))
     
     class_distribution = detect_class_imbalance(simulated_y)
-    print(f"📊 Klassfördelning:
+    print(f"Klassfördelning:
 {class_distribution}")
     
     simulated_X = pd.DataFrame(np.random.randn(1000, 5), columns=[f"Feature_{i}" for i in range(5)])
     balanced_X, balanced_y = apply_data_resampling(simulated_X, simulated_y)
-    print(f"🔄 Resamplat dataset: {len(balanced_X)} observationer")
+    print(f"Resamplat dataset: {len(balanced_X)} observationer")
