@@ -1,6 +1,7 @@
+import logging
+
 import numpy as np
 import pandas as pd
-import logging
 
 # Konfigurera loggning
 logging.basicConfig(filename="feature_engineering.log", level=logging.INFO)

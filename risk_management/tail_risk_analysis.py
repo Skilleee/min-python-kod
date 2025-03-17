@@ -1,6 +1,6 @@
-import numpy as np
-import pandas as pd
 import logging
+
+import numpy as np
 
 # Konfigurera loggning
 logging.basicConfig(filename="tail_risk_analysis.log", level=logging.INFO)

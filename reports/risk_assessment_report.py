@@ -1,5 +1,5 @@
 import logging
-import pandas as pd
+
 
 # Konfigurera loggning
 logging.basicConfig(filename="risk_assessment_report.log", level=logging.INFO)

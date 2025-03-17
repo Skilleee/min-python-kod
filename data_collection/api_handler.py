@@ -1,6 +1,7 @@
-import requests
 import logging
 from datetime import datetime
+
+import requests
 
 # Konfigurera loggning
 logging.basicConfig(filename="api_handler.log", level=logging.INFO)

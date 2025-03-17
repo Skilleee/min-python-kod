@@ -1,10 +1,11 @@
+import logging
+
+import joblib
 import numpy as np
 import pandas as pd
-import logging
-from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import accuracy_score
-import joblib
+from sklearn.model_selection import train_test_split
 
 # Konfigurera loggning
 logging.basicConfig(filename="adaptive_training.log", level=logging.INFO)

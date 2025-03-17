@@ -1,6 +1,6 @@
-import pandas as pd
-import numpy as np
 import logging
+
+import pandas as pd
 
 # Konfigurera loggning
 logging.basicConfig(filename="stop_loss_risk_mitigation.log", level=logging.INFO)

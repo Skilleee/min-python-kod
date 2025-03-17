@@ -1,5 +1,6 @@
-import requests
 import logging
+
+import requests
 
 # Konfigurera loggning
 logging.basicConfig(filename="live_sentiment_tracking.log", level=logging.INFO)

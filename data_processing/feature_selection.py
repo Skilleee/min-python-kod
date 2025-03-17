@@ -1,8 +1,10 @@
+import logging
+from datetime import datetime
+
 import numpy as np
 import pandas as pd
-import logging
-from sklearn.feature_selection import SelectKBest, f_classif, mutual_info_regression
-from datetime import datetime
+from sklearn.feature_selection import (SelectKBest, f_classif,
+                                       mutual_info_regression)
 
 # Konfigurera loggning
 logging.basicConfig(filename="feature_selection.log", level=logging.INFO)

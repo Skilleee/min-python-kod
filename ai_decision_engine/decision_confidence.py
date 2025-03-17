@@ -1,6 +1,6 @@
-import numpy as np
-import pandas as pd
 import logging
+
+import pandas as pd
 
 # Konfigurera loggning
 logging.basicConfig(filename="decision_confidence.log", level=logging.INFO)

@@ -1,7 +1,7 @@
 import logging
 import os
-import time
 import subprocess
+import time
 
 # Konfigurera loggning
 logging.basicConfig(filename="fail_safe_mechanism.log", level=logging.INFO)

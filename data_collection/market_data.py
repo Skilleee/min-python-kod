@@ -1,6 +1,7 @@
-import yfinance as yf
 import logging
 from datetime import datetime
+
+import yfinance as yf
 
 # Skapa en loggfil
 logging.basicConfig(filename="market_data.log", level=logging.INFO)

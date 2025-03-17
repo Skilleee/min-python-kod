@@ -1,5 +1,6 @@
-import requests
 import logging
+
+import requests
 
 # Konfigurera loggning
 logging.basicConfig(filename="api_wrapper.log", level=logging.INFO)

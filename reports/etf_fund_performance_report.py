@@ -1,5 +1,5 @@
 import logging
-import pandas as pd
+
 
 # Konfigurera loggning
 logging.basicConfig(filename="etf_fund_performance_report.log", level=logging.INFO)

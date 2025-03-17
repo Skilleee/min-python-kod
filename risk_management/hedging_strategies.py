@@ -1,5 +1,5 @@
 import logging
-import pandas as pd
+
 
 # Konfigurera loggning
 logging.basicConfig(filename="hedging_strategies.log", level=logging.INFO)

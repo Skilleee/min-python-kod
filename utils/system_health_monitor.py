@@ -1,6 +1,7 @@
-import psutil
 import logging
 import time
+
+import psutil
 
 # Konfigurera loggning
 logging.basicConfig(filename="system_health_monitor.log", level=logging.INFO)

@@ -1,6 +1,6 @@
-import requests
-import json
 import logging
+
+import requests
 
 # Konfigurera loggning
 logging.basicConfig(filename="hedge_fund_positions.log", level=logging.INFO)

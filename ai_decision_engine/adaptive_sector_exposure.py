@@ -1,6 +1,7 @@
 import logging
-import pandas as pd
+
 import numpy as np
+import pandas as pd
 
 # Konfigurera loggning
 logging.basicConfig(filename="adaptive_sector_exposure.log", level=logging.INFO)

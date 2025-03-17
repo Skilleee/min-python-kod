@@ -1,7 +1,7 @@
+import logging
+
 import numpy as np
 import pandas as pd
-import logging
-from scipy.stats import norm
 
 # Konfigurera loggning
 logging.basicConfig(filename="equity_risk.log", level=logging.INFO)

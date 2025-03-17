@@ -1,6 +1,7 @@
+import logging
+
 import numpy as np
 import pandas as pd
-import logging
 
 # Konfigurera loggning
 logging.basicConfig(filename="capital_allocation_decision.log", level=logging.INFO)

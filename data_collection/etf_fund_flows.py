@@ -1,6 +1,6 @@
-import requests
-import json
 import logging
+
+import requests
 
 # Konfigurera loggning
 logging.basicConfig(filename="etf_fund_flows.log", level=logging.INFO)

@@ -1,6 +1,6 @@
 import json
-import pandas as pd
 import logging
+
 
 # Konfigurera loggning
 logging.basicConfig(filename="file_utils.log", level=logging.INFO)

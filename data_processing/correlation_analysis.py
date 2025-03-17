@@ -1,8 +1,9 @@
-import pandas as pd
-import numpy as np
 import logging
-import seaborn as sns
+
 import matplotlib.pyplot as plt
+import numpy as np
+import pandas as pd
+import seaborn as sns
 
 # Konfigurera loggning
 logging.basicConfig(filename="correlation_analysis.log", level=logging.INFO)

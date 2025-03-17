@@ -1,6 +1,7 @@
+import logging
+
 import numpy as np
 import pandas as pd
-import logging
 from sklearn.ensemble import IsolationForest
 from sklearn.preprocessing import StandardScaler
 

@@ -1,6 +1,7 @@
-import requests
 import logging
 from datetime import datetime
+
+import requests
 
 # Konfigurera loggning
 logging.basicConfig(filename="order_flow_analysis.log", level=logging.INFO)

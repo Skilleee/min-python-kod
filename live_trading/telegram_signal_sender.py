@@ -1,5 +1,6 @@
-import requests
 import logging
+
+import requests
 
 # Konfigurera loggning
 logging.basicConfig(filename="telegram_signal_sender.log", level=logging.INFO)

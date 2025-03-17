@@ -1,7 +1,7 @@
-import numpy as np
-import pandas as pd
 import logging
 from datetime import datetime
+
+import numpy as np
 
 # Konfigurera loggning
 logging.basicConfig(filename="normalization.log", level=logging.INFO)

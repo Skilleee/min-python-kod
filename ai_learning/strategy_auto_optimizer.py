@@ -1,6 +1,7 @@
+import logging
+
 import numpy as np
 import pandas as pd
-import logging
 from scipy.optimize import minimize
 
 # Konfigurera loggning

@@ -1,5 +1,5 @@
 import logging
-import pandas as pd
+
 
 # Konfigurera loggning
 logging.basicConfig(filename="macro_event_impact.log", level=logging.INFO)

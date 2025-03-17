@@ -1,13 +1,11 @@
-import schedule
-import time
 import logging
-from datetime import datetime
+import time
 
+import schedule
+from ai_trading_bot.ai_decision_engine.strategy_generation import \
+    generate_trading_signal
 # Importera nödvändiga moduler
 from ai_trading_bot.data_collection.market_data import fetch_multiple_stocks
-from ai_trading_bot.ai_decision_engine.strategy_generation import (
-    generate_trading_signal,
-)
 from ai_trading_bot.notifications.telegram_alert import send_telegram_alert
 
 # Konfigurera loggning

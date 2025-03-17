@@ -1,6 +1,7 @@
-import requests
 import logging
 from datetime import datetime
+
+import requests
 
 # Konfigurera loggning
 logging.basicConfig(filename="institutional_flows.log", level=logging.INFO)

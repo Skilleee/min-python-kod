@@ -1,8 +1,9 @@
+import logging
+
+import joblib
 import numpy as np
 import pandas as pd
-import logging
 import shap
-import joblib
 
 # Konfigurera loggning
 logging.basicConfig(filename="explainable_ai.log", level=logging.INFO)

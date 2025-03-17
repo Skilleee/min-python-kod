@@ -1,5 +1,6 @@
-import pandas as pd
 import logging
+
+import pandas as pd
 
 # Konfigurera loggning
 logging.basicConfig(filename="tax_optimization.log", level=logging.INFO)

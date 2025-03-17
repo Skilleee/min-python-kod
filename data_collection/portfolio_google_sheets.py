@@ -1,7 +1,8 @@
-import gspread
-from oauth2client.service_account import ServiceAccountCredentials
 import logging
 from datetime import datetime
+
+import gspread
+from oauth2client.service_account import ServiceAccountCredentials
 
 # Konfiguration för Google Sheets API
 SCOPE = [

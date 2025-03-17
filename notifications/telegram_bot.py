@@ -1,6 +1,6 @@
-import requests
 import logging
-import pandas as pd
+
+import requests
 
 # Konfigurera loggning
 logging.basicConfig(filename="telegram_notifications.log", level=logging.INFO)

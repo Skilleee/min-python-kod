@@ -1,9 +1,10 @@
+import logging
+
+import gym
 import numpy as np
 import pandas as pd
-import logging
-import gym
-from stable_baselines3 import PPO
 from gym import spaces
+from stable_baselines3 import PPO
 
 # Konfigurera loggning
 logging.basicConfig(filename="reinforcement_learning.log", level=logging.INFO)

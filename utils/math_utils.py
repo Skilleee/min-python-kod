@@ -1,5 +1,6 @@
-import numpy as np
 import logging
+
+import numpy as np
 
 # Konfigurera loggning
 logging.basicConfig(filename="math_utils.log", level=logging.INFO)

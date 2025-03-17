@@ -1,6 +1,7 @@
-import pandas as pd
-import numpy as np
 import logging
+
+import numpy as np
+import pandas as pd
 
 # Konfigurera loggning
 logging.basicConfig(filename="live_market_analysis.log", level=logging.INFO)

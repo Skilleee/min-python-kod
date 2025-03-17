@@ -1,8 +1,7 @@
 import logging
-import time
-import pandas as pd
-import numpy as np
 import random
+import time
+
 
 # Konfigurera loggning
 logging.basicConfig(filename="live_trading_monitor.log", level=logging.INFO)

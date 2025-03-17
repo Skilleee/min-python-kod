@@ -1,6 +1,7 @@
 import datetime
-import pytz
 import logging
+
+import pytz
 
 # Konfigurera loggning
 logging.basicConfig(filename="date_utils.log", level=logging.INFO)

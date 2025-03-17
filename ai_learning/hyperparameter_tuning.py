@@ -1,10 +1,10 @@
+import logging
+
+import joblib
 import numpy as np
 import pandas as pd
-import logging
-from sklearn.model_selection import GridSearchCV
 from sklearn.ensemble import RandomForestClassifier
-from sklearn.metrics import accuracy_score
-import joblib
+from sklearn.model_selection import GridSearchCV
 
 # Konfigurera loggning
 logging.basicConfig(filename="hyperparameter_tuning.log", level=logging.INFO)

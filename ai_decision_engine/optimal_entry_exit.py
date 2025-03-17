@@ -1,6 +1,7 @@
+import logging
+
 import numpy as np
 import pandas as pd
-import logging
 
 # Konfigurera loggning
 logging.basicConfig(filename="optimal_entry_exit.log", level=logging.INFO)

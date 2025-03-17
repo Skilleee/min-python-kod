@@ -1,5 +1,5 @@
 import logging
-import pandas as pd
+
 
 # Konfigurera loggning
 logging.basicConfig(filename="sector_rotation_report.log", level=logging.INFO)

@@ -1,7 +1,8 @@
-import requests
 import logging
-from textblob import TextBlob
 from datetime import datetime
+
+import requests
+from textblob import TextBlob
 
 # Konfigurera loggning
 logging.basicConfig(filename="news_analysis.log", level=logging.INFO)
