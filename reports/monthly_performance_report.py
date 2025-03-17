@@ -1,6 +1,5 @@
 import logging
 
-
 # Konfigurera loggning
 logging.basicConfig(filename="monthly_performance_report.log", level=logging.INFO)
 

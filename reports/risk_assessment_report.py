@@ -1,6 +1,5 @@
 import logging
 
-
 # Konfigurera loggning
 logging.basicConfig(filename="risk_assessment_report.log", level=logging.INFO)
 

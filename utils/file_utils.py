@@ -1,7 +1,6 @@
 import json
 import logging
 
-
 # Konfigurera loggning
 logging.basicConfig(filename="file_utils.log", level=logging.INFO)
 

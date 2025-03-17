@@ -1,6 +1,5 @@
 import logging
 
-
 # Konfigurera loggning
 logging.basicConfig(filename="weekly_market_report.log", level=logging.INFO)
 

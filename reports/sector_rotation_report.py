@@ -1,6 +1,5 @@
 import logging
 
-
 # Konfigurera loggning
 logging.basicConfig(filename="sector_rotation_report.log", level=logging.INFO)
 

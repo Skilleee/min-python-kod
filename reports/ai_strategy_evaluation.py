@@ -1,6 +1,5 @@
 import logging
 
-
 # Konfigurera loggning
 logging.basicConfig(filename="ai_strategy_evaluation.log", level=logging.INFO)
 

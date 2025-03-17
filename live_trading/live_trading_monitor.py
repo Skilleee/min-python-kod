@@ -2,7 +2,6 @@ import logging
 import random
 import time
 
-
 # Konfigurera loggning
 logging.basicConfig(filename="live_trading_monitor.log", level=logging.INFO)
 
