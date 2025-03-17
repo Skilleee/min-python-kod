@@ -41,6 +41,15 @@ jobs:
       - name: Lint with Pylint
         run: pylint --disable=C,R,W . || true
 
+      - name: Configure Git
+        run: |
+          git config --global user.email "github-actions@github.com"
+          git config --global user.name "GitHub Actions"
+
+      - name: Authenticate GitHub
+        run: |
+          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git
+
       - name: Auto-format and commit if changes exist
         run: |
           git add .
