@@ -9,28 +9,35 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v3
         with:
-          token: ${{ secrets.GH_PAT }}  # Använder din nya token för att få skrivåtkomst
+          token: ${{ secrets.GH_PAT }}  # Använd personlig access-token för att pusha
 
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
           python-version: '3.10'
+          cache: 'pip'  # Snabbar upp installationen
 
       - name: Install auto-fix tools
-        run: pip install black flake8 pylint
-
-      - name: Auto-format code
         run: |
-          black .
-          flake8 . --max-line-length=100 || true
+          pip install --upgrade pip
+          pip install black flake8 pylint
+
+      - name: Auto-format code with Black
+        run: black .
+
+      - name: Lint with Flake8
+        run: flake8 . --max-line-length=100
+
+      - name: Lint with Pylint
+        run: pylint --disable=C,R,W . || true  # Ignorera warnings och info-meddelanden
 
       - name: Commit and push changes
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
-          commit_message: "Auto-fix: formatted code using Black & Flake8"
+          commit_message: "Auto-fix: formatted code using Black, Flake8 & Pylint"
           repository: .
           commit_user_name: github-actions[bot]
           commit_user_email: 41898282+github-actions[bot]@users.noreply.github.com
           commit_author: Skilleee <Skilleee@users.noreply.github.com>
         env:
-          GITHUB_TOKEN: ${{ secrets.GH_PAT }}  # Använd token här också för push-rättigheter
+          GITHUB_TOKEN: ${{ secrets.GH_PAT }}  # Använd din token för push
