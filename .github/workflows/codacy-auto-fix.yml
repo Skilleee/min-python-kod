@@ -9,38 +9,37 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v3
         with:
-          fetch-depth: 1  # Säkerställ att hela repo checkas ut
-          token: ${{ secrets.GH_PAT }}  # Använd personlig access-token för att pusha
+          fetch-depth: 1
+          token: ${{ secrets.GH_PAT }}
 
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.10'  # Tar bort cache eftersom ingen requirements.txt finns
+          python-version: '3.10'
 
       - name: Verify repository contents
-        run: ls -la  # Kolla att koden verkligen är utcheckad
+        run: ls -la
 
-      - name: Install auto-fix tools
+      - name: Install dependencies
         run: |
-          pip install --upgrade pip --no-cache-dir
-          pip install black flake8 pylint --no-cache-dir
+          pip install --upgrade pip
+          pip install black flake8 pylint
+          pip install pandas numpy sklearn tensorflow requests textblob gspread oauth2client yfinance matplotlib seaborn fpdf psutil dotenv gym stable_baselines3 scipy schedule
 
       - name: Auto-format code with Black
         run: black .
 
       - name: Lint with Flake8
-        run: flake8 . --max-line-length=100 || true  # Ignorera errors temporärt
+        run: flake8 . --max-line-length=120 --select=E,F,W || true
 
       - name: Lint with Pylint
-        run: pylint --disable=C,R,W . || true  # Ignorera warnings och info-meddelanden
+        run: pylint --disable=C,R,W . || true
 
-      - name: Commit and push changes
-        uses: stefanzweifel/git-auto-commit-action@v4
-        with:
-          commit_message: "Auto-fix: formatted code using Black, Flake8 & Pylint"
-          repository: .
-          commit_user_name: github-actions[bot]
-          commit_user_email: 41898282+github-actions[bot]@users.noreply.github.com
-          commit_author: Skilleee <Skilleee@users.noreply.github.com>
+      - name: Auto-format and commit
+        run: |
+          black .
+          git add .
+          git commit -m "Auto-fix: formatted code using Black, Flake8 & Pylint" || true
+          git push
         env:
-          GITHUB_TOKEN: ${{ secrets.GH_PAT }}  # Använd din token för push
+          GITHUB_TOKEN: ${{ secrets.GH_PAT }}
