@@ -24,7 +24,7 @@ jobs:
         run: |
           pip install --upgrade pip
           pip install black flake8 pylint
-          pip install pandas numpy sklearn tensorflow requests textblob gspread oauth2client yfinance matplotlib seaborn fpdf psutil dotenv gym stable_baselines3 scipy schedule
+          pip install pandas numpy scikit-learn tensorflow requests textblob gspread oauth2client yfinance matplotlib seaborn fpdf psutil dotenv gym stable_baselines3 scipy schedule
 
       - name: Auto-format code with Black
         run: black .
