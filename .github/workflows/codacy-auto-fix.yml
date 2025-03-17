@@ -15,8 +15,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.10'
-          cache: 'pip'  # Snabbar upp installationen
+          python-version: '3.10'  # Tar bort cache eftersom ingen requirements.txt finns
 
       - name: Verify repository contents
         run: ls -la  # Kolla att koden verkligen är utcheckad
