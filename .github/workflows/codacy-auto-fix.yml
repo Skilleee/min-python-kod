@@ -25,7 +25,8 @@ jobs:
         run: |
           pip install --upgrade pip
           pip install black isort autoflake flake8 pylint
-          pip install pandas numpy scikit-learn tensorflow requests textblob gspread oauth2client yfinance matplotlib seaborn fpdf psutil dotenv gym stable_baselines3 scipy schedule
+          pip install pandas numpy scikit-learn tensorflow requests textblob gspread oauth2client yfinance \
+                     matplotlib seaborn fpdf psutil dotenv gym stable_baselines3 scipy schedule
 
       - name: Auto-format code with Black and Isort
         run: |
@@ -46,16 +47,24 @@ jobs:
           git config --global user.email "github-actions@github.com"
           git config --global user.name "GitHub Actions"
 
+      - name: Prevent infinite loop
+        run: |
+          if git log -1 --pretty=%B | grep -q "Auto-fix"; then
+            echo "Skipping auto-fix commit to prevent loop"
+            exit 0
+          fi
+
       - name: Authenticate GitHub
         run: |
           git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git
 
       - name: Auto-format and commit if changes exist
+        if: github.ref == 'refs/heads/main'
         run: |
           git add .
           if ! git diff --cached --exit-code; then
             git commit -m "Auto-fix: formatted code using Black, Isort, Autoflake, Flake8 & Pylint"
-            git push
+            git push origin HEAD:main
           fi
         env:
           GITHUB_TOKEN: ${{ secrets.GH_PAT }}
