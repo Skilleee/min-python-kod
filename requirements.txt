@@ -1,0 +1,28 @@
+# Formatterings- och linting-verktyg
+black
+isort
+autoflake
+flake8
+pylint
+
+# Databehandling & analys
+pandas
+numpy
+scikit-learn
+tensorflow
+requests
+textblob
+gspread
+oauth2client
+yfinance
+matplotlib
+seaborn
+fpdf
+psutil
+python-dotenv
+schedule
+
+# Maskininlärning & RL
+gym
+stable_baselines3
+scipy
